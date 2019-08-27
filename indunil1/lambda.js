@@ -3,8 +3,8 @@ const sns = new AWS.SNS();
 
 exports.handler = function (event, context, callback) {
     sns.publish({
-        Message: 'check-mails',
-        Subject: 'test1-indunil',
+        Message: 'checktest',
+        Subject: 'test1',
         MessageAttributes: {
             '1': {
                 'DataType': 'String',
