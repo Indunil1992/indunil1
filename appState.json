@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunil1/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.publish({\n        Message: 'check-mails',\n        Subject: 'test1-indunil',\n        MessageAttributes: {},\n        MessageStructure: 'String',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n    sns.publish({\n        Message: 'check-mails',\n        Subject: 'test1-indunil',\n        MessageAttributes: {\n            '1': {\n                'DataType': 'String',\n                'StringValue': 'abc'\n            },\n            '2': {\n                'DataType': 'Number',\n                'StringValue': '10'\n            }\n        },\n        MessageStructure: 'String',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -60,8 +60,8 @@
           "snsType": 0,
           "subscriptions": [
             {
-              "type": "sms",
-              "endpoint": "+94717177220"
+              "type": "email",
+              "endpoint": "sachithrarajapakse1992@gmail.com"
             }
           ]
         }
@@ -100,7 +100,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1566882361338
+    "lastSave": 1566882588894
   },
   "VCS_STATE": {
     "provider": "GitHub",

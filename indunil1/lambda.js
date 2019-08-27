@@ -5,7 +5,16 @@ exports.handler = function (event, context, callback) {
     sns.publish({
         Message: 'check-mails',
         Subject: 'test1-indunil',
-        MessageAttributes: {},
+        MessageAttributes: {
+            '1': {
+                'DataType': 'String',
+                'StringValue': 'abc'
+            },
+            '2': {
+                'DataType': 'Number',
+                'StringValue': '10'
+            }
+        },
         MessageStructure: 'String',
         TopicArn: 'arn:aws:sns:us-east-1:318300609668:TestSNS'
     }).promise()
